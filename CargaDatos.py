@@ -1,28 +1,63 @@
+import traceback
+
 def cargarDatos(ruta,delimitador):
-    numAtributos=0
-    numPatrones=0
+
+    matriz=[]
+
     try:
         with open(ruta,'r') as base:
             for linea in base:
                 lineaLimpia=linea.strip()
                 if lineaLimpia!="":
                     atributos = lineaLimpia.split(delimitador)
-                    print(atributos)
-                    numPatrones = numPatrones + 1
+                    matriz.append(atributos)
+        return matriz
 
-        print(f"El numero de patrones es {numPatrones}")
-        print(f"El numero de atributos es {numAtributos}")
+
     except FileNotFoundError:
-        print("No se encuentra el archivo")
+        return 0
 
 
 
 def main():
+
     print("Ingresa el nombre del archivo")
     ruta = input()
     print("Ingresa el delimitador del archivo")
     delimitador = input()
-    cargarDatos(ruta,delimitador)
+
+    matriz=cargarDatos(ruta,delimitador)
+    if matriz:
+        patrones = len(matriz)
+        atributos = len(matriz[0])
+
+        print(f"El numero de patrones es: {patrones}")
+        print(f"El numero de atributos es: {atributos}")
+        # print("El contenido de la matriz es:")
+        # for i in range(patrones):
+        #     print(matriz[i])
+
+        print("Especifica la columna CLASE: ")
+        clase = int(input())
+
+
+        # print(type(matriz))
+
+        print(matriz[1][clase])
+
+        # print("Columna clase de todos los atributos: ")
+        # for i in range(atributos):
+        #     print(f"{i}. {matriz[i[clase]]} ")
+
+    else:
+        print(f"El archivo no se encuentra")
+
+
+
+
+
+
+
 
 
 main()
