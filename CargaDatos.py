@@ -17,6 +17,33 @@ def cargarDatos(ruta,delimitador):
     except FileNotFoundError:
         return 0
 
+#Calidad del vino tinto
+def imprimirColumnaClase(matriz, columna_clase):
+    """
+    Imprime todos los valores de la columna que el usuario define como clase (etiqueta).
+    """
+    print("\nColumna CLASE completa:")
+    for i in range(len(matriz)):
+        print(matriz[i][columna_clase])
+
+def clasificarVinoPorCalidad(matriz, columna_clase):
+    """
+    Clasifica vinos según su calidad (entera) como baja, media o alta.
+    Solo debe usarse si el archivo es el del vino.
+    """
+    print("\nClasificación del vino por calidad:")
+    for i in range(len(matriz)):
+        try:
+            calidad = int(float(matriz[i][columna_clase]))
+            if calidad <= 5:
+                print(f"Vino de baja calidad ({calidad})")
+            elif calidad == 6:
+                print(f"Vino de calidad media ({calidad})")
+            else:
+                print(f"Vino de alta calidad ({calidad})")
+        except ValueError:
+            print("No se pudo convertir la calidad:", matriz[i][columna_clase])
+
 
 
 def main():
@@ -39,6 +66,13 @@ def main():
 
         print("Especifica la columna CLASE: ")
         clase = int(input())
+        
+        imprimirColumnaClase(matriz, clase)
+        if "wine" in ruta.lower():
+            clasificarVinoPorCalidad(matriz, clase)
+        
+       
+      
 
 
         # print(type(matriz))
@@ -49,8 +83,7 @@ def main():
         # for i in range(atributos):
         #     print(f"{i}. {matriz[i[clase]]} ")
 
-    else:
-        print(f"El archivo no se encuentra")
+   
 
 
 
