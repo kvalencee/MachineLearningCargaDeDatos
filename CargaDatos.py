@@ -17,7 +17,8 @@ def cargarDatos(ruta,delimitador):
     except FileNotFoundError:
         return 0
 
-#Calidad del vino tinto
+
+#Clasificación del vino tinto
 def imprimirColumnaClase(matriz, columna_clase):
     """
     Imprime todos los valores de la columna que el usuario define como clase (etiqueta).
@@ -28,8 +29,8 @@ def imprimirColumnaClase(matriz, columna_clase):
 
 def clasificarVinoPorCalidad(matriz, columna_clase):
     """
-    Clasifica vinos según su calidad (entera) como baja, media o alta.
-    Solo debe usarse si el archivo es el del vino.
+    Clasifica vinos según su calidad (int) como baja, media o alta.
+    Solo debe usarse si el archivo es del vino.
     """
     print("\nClasificación del vino por calidad:")
     for i in range(len(matriz)):
@@ -78,12 +79,15 @@ def main():
         # print(type(matriz))
 
         print(matriz[1][clase])
+         
+    else:
+         print(f"El archivo no se encuentra")
 
         # print("Columna clase de todos los atributos: ")
         # for i in range(atributos):
         #     print(f"{i}. {matriz[i[clase]]} ")
 
-   
+    
 
 
 
